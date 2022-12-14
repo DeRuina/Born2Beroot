@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+message=$(echo "#Architecture: `uname -a`
+#CPU physical: `nproc`
+#vCPU: `lscpu | grep -i 'core(s) per socket' | wc -l`
+#Memory Usage: `free -m | grep 'Mem:'| awk '{printf "%d/%dMB (%.2f%%)", $3, $2, ($3/$2)*100}'`
+#Disk Usage: `df -h | grep root | awk '{printf "%.1f/%.1fGB (%d%%)", $3, $2, $5}'`
+#CPU load: `mpstat | grep all | awk '{printf "%.1f%%", 100-$13}'`
+#Last boot: `last reboot | head -n 1| awk '{printf "%s %s %s %s", $5, $6, $7, $8}'`
+#LVM use: `lsblk | grep lvm | awk '{if ($1) {printf "yes";exit;} else {printf "no"}}'`
+#Connections TCP: `netstat -n | grep 'ESTABLISHED' | wc -l` ESTABLISHED
+#User log: `who -b | wc -l` 
+#Network: IP `hostname -i` (`ip link show | grep ether | awk '{printf "%s", $2}'`)
+#Sudo: `journalctl -u * | grep COMMAND | wc -l` cmd") 
+
+wall "$message"
