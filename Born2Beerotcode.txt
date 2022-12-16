@@ -1,0 +1,124 @@
+**Switch User**
+
+su -  **switch user root
+
+su <username> **switch user <username>
+
+
+**Install A Program**
+
+apt update **check updates
+
+Apt install <program name> **install a program
+
+
+**Getent**
+
+getent group ** check the the id, group members.
+
+getent passwd <username> ** check the info of the username 
+
+
+**Commands**
+
+lsblk ** display information about the block commands
+
+systemctl status <program name> **check if its running
+
+ip addr **get your ip
+
+
+**AppArmor**
+
+aa-status ** status of your AppArmor
+
+aa-enforce /etc/apparmor.d/ <profile name> **enfore AppArmor on their names
+
+aa-complain /etc/apparmor.d/ <profile name> **enfore AppArmor on their names
+
+sudo service apparmor start **start AppArmor at startup
+
+sudo service apparmor status **check it's running
+
+**SSH**
+
+vim /etc/ssh/sshd_config **to enter the SSH setting
+Port 22 to port 4242
+permitRootLogin no
+Aaufw status
+service ssh restart **restart after change (port and permitrootlogin) 
+
+Ssh -p <port> <username>@<ip-address> **to ssh to the server from the terminal
+
+
+**UFW**
+
+ufw status ** status of the firewall
+Ufw enable ** enable firewall 
+Ufw allow <port number> **allow specific port to work
+ufw deny <port number> **delete
+
+**password**
+sudo vim /etc/security/pwquality.conf **change password 
+
+sudo vim /etc/login.defs **password expirations
+sudo chage <username> -l **check aging
+sudo chage --<configuration>=<value> **to change manually	
+
+**sudo**
+Sudo vim /etc/sudoers **change the files
+Defaults     passwd_tries=3 **password tries
+Defaults        badpass_message="<custom-error-message>" **wrong message
+Defaults	logfile="/var/log/sudo/sudo.log" **path to log file
+Defaults	log_input,log_output ** to log input and output
+Defaults        requiretty **include TTY
+Defaults   secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin" ** secure path
+Sudo -l **check sudo requirement
+sudo tail  /var/log/sudo/<filename> **check the log is working
+your_username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh **adding is after writing the script
+
+
+**user**
+Adduser <username> **add user
+passwd <username> **create a password
+deluser <username> **delete a user
+addgroup <group name> **creating a new group
+delgroup <groupname> ** deleting a group
+Adduser <username> <group> **adding to a group
+Id -nG <username> **check what groups the username is in
+Id <username> **check if there is a user
+
+**hostname**
+Hostnamectl **check hostname
+Sudo vim /etc/hostname **change host name then reboot
+
+**crontab**
+sudo crontab -u root -e ** openning the cron file
+Sudo crontab -l ** check what rules are applie
+*/10 * * * * /usr/local/bin/monitoring.sh ** adding this in end of the filesudou
+
+
+****STEPS****
+1. SWITCH TO ROOT
+2. INSTALL SUDO (CHECK IF INTSALLED)
+3. ADD USER TO SUDO GROUP (CHECK IF ADDED)
+4. REBOOT FOR CHANGES TO TAKE AFFECT
+5. INTSALL VIM
+6. CHANGE SUDO FILE
+7. INSTALL SSH
+8. CONFIG SSH FILE (CHANGE PORT TO 4242 LOGIN TO ROOT PROHIBITED)
+9. CHECK SSH STATUS
+10. OPEN PORT THROUGH VM
+11. INSTALL APPARMOR
+12. APPLY APPARMOR
+13. INTALL UFW
+14. ENABLE FIREWALL + ALLOW PORT
+15. CHECK UFW STATUS
+16. CHECK SSH CONNECTION THROUGH TERMINAL
+17. CHANGING PASSWORD AGING
+18. INTSALL LIBPAM-PWQUALITY
+19. CHANGE PASSWORD POLICIES
+20.CHANGE OLDER USERS PASSWORD POLICIES AND AGING
+21.SET UP A CRONTAB AND ADD THE SCRIPT
+22. ADD THE PRIVILEGE IN THE SUDO FILE
+
