@@ -96,6 +96,7 @@ Sudo vim /etc/hostname **change host name then reboot
 sudo crontab -u root -e ** openning the cron file
 Sudo crontab -l ** check what rules are applie
 */10 * * * * /usr/local/bin/monitoring.sh ** adding this in end of the filesudou
+/etc/init.d/cron stop ** how to stop cron
 
 
 ****STEPS****

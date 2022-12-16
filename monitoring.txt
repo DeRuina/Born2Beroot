@@ -11,7 +11,7 @@ message=$(echo "#Architecture: `uname -a`
 #LVM use: `lsblk | grep lvm | awk '{if ($1) {printf "yes";exit;} else {printf "no"}}'`
 #Connections TCP: `netstat -n | grep 'ESTABLISHED' | wc -l` ESTABLISHED
 #User log: `who -b | wc -l` 
-#Network: IP `hostname -i` (`ip link show | grep ether | awk '{printf "%s", $2}'`)
-#Sudo: `journalctl -u * | grep COMMAND | wc -l` cmd") 
+#Network: IP `ip a | grep 'scope global' | awk '{printf "%s", $2}'` (`ip link show | grep ether | awk '{printf "%s", $2}'`)
+#Sudo: `cat /var/log/sudo/sudo.log | grep COMMAND | wc -l` cmd") 
 
 wall "$message"
